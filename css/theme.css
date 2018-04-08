@@ -9,8 +9,8 @@
  */
 
 @font-face {
-    font-family: Roboto Slab;
-    src: url("css/fonts/RobotoSlab-Regular.ttf");
+    font-family: 'Roboto Slab';
+    src: url("fonts/RobotoSlab-Regular.ttf");
 }
 :root {
   --blue: #007bff;
@@ -48,12 +48,13 @@
   box-sizing: border-box; }
 
 html {
-  font-family: sans-serif;
   line-height: 1.15;
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
   -ms-overflow-style: scrollbar;
-  -webkit-tap-highlight-color: transparent; }
+  -webkit-tap-highlight-color: transparent;
+    font-family: 'Roboto Slab' !important;
+}
 
 @-ms-viewport {
   width: device-width; }
