@@ -48,14 +48,14 @@
   box-sizing: border-box; }
 
 html {
+  font-family: sans-serif;
   line-height: 1.15;
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
   -ms-overflow-style: scrollbar;
-  -webkit-tap-highlight-color: transparent;
+    font-family: 'Roboto Slab';
     scroll-behavior: smooth;
-    font-family: 'Roboto Slab' !important;
-}
+  -webkit-tap-highlight-color: transparent; }
 
 @-ms-viewport {
   width: device-width; }
@@ -6201,4 +6201,16 @@ html, body {
   60% {
     transform: translateY(20px);
   }
+}
+
+#readMore-bot {
+    background: none; 
+    border: none;
+    cursor: pointer;
+    color: #0000EE
+}
+
+#readMore-bot:hover {
+    color: #4242ff;
+    text-decoration: underline;
 }
