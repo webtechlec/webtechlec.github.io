@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 1600 769" enable-background="new 0 0 1600 769" xml:space="preserve">
+	 viewBox="0 0 1600 769" enable-background="new 0 0 1600 769" xml:space="preserve" onclick="clicked(evt)">
 <image overflow="visible" width="1600" height="769" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABkAAAAMBCAYAAAC3MHjJAAAgAElEQVR4Xuy9eYxkx33n+cv7rsw6
 uq6+75NHs5u3RJEUKduyLMuHZmRrsLZlYNbyYhcLL8a7O4vZXcwCs8AsdjAwsGt7AMk7A3vkkUYe
 WbdEiqQoks0mu9nd6vvu6q77zKy878U3Xv1eRb58R7ysrOqmzNAfYlfGi4gX7+XLzPjE9/v1vPvu
@@ -17544,8 +17544,16 @@ XxXVVIsroYKpNQgOFnNzszQ7f7BPGQK4cP3622I+87GPPCM+gxVVKh0Xll7id7nepmqtuxAGCi8s
 NNNZ2gmrv1gvn0QRscDyClZWbH3Fx4S/ceYI3t+pGRDvPrgmsKDp0NGTlMl0ATf6ylkhp7/zx8Ky
 KjeZo2CnOwe9Ua1RtQdGoZJ48KGPiOP52lf+swAgGINde/bR0WMnRSg6CgMQmwD0UVtfqee1kF+z
 CkX3C0D+fyWDjI7ac17FAAAAAElFTkSuQmCC"/>
-   <ellipse onclick="top.notify(evt)" 
-id="g1" cx="25%" cy="25%" 
-rx="24%" ry="24%" fill="pink" 
-stroke="blue"/>
+    <script>
+    function clicked(evt){
+        var e = evt.target;
+        var dim = e.getBoundingClientRect();
+        var x = evt.clientX - dim.left;
+        var y = evt.clientY - dim.top;
+        alert("x: "+x+" y:"+y);
+    }                    
+                </script>
+    <g>
+        <image href="markers/police.png" height="50" width="50" onclick="top.test(evt)" style="cursor: pointer" x="507" y="200" id="xD"/>
+    </g>
 </svg>

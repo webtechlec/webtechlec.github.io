@@ -1,1 +1,3 @@
-function notify(evt){alert(evt.target.id)}
+function test(evt) {
+    alert(evt.target.id);
+}
