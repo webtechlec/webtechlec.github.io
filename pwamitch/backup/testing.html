@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset=utf-8 />
+<title>Custom marker icons</title>
+<meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+<script src='https://api.tiles.mapbox.com/mapbox.js/v2.1.6/mapbox.js'></script>
+<link href='https://api.tiles.mapbox.com/mapbox.js/v2.1.6/mapbox.css' rel='stylesheet' />
+<style>
+  body { margin:0; padding:0; }
+  #map { position:absolute; top:0; bottom:0; width:100%; }
+</style>
+</head>
+<body>
+<style>
+.menu-ui {
+  background:#A2A19F;
+  position:absolute;
+  bottom:50px;
+  left:50%;
+  margin-left:-110px;
+  z-index:1;
+  border-radius:3px;
+  width:auto;
+  border:1px solid rgba(0,0,0,0.4);
+  }
+  .menu-ui a {
+    font-size:22px;
+    color:#fff;
+    display:table-cell;
+    padding:10px;
+    text-decoration:none;
+    border-bottom:1px solid rgba(0,0,0,0.25);
+    text-align:center;
+    }
+    .menu-ui a:first-child {
+      border-radius:3px 3px 0 0;
+      }
+    .menu-ui a:last-child {
+      border:none;
+      border-radius:0 0 3px 3px;
+      }
+    .menu-ui a:hover {
+      background:#f8f8f8;
+      color:#404040;
+      }
+    .menu-ui a.active,
+    .menu-ui a.active:hover {
+      background:#DB3E3A;
+      color:#FFF;
+      }
+	 
+.popup {
+  text-align:center;
+  }
+.popup .slideshow .image        { display:none; }
+.popup .slideshow .image.active { display:block; }
+.popup .slideshow img {
+  width:100%;
+  }
+.popup .slideshow .caption {
+  background:#eee;
+  padding:10px;
+  }
+.popup .cycle {
+  padding:10px 0 20px;
+  }
+  .popup .cycle a.prev { float:left; }
+  .popup .cycle a.next { float:right; }
+
+</style>
+<nav class='menu-ui'>
+  <a href='#' class='active' data-filter='Development'>Development</a>
+  <a href='#' data-filter='Land'>Land</a>
+
+</nav>
+
+<div id='map'></div>
+<!-- jQuery is required for this example. -->
+<script src='https://code.jquery.com/jquery-1.11.0.min.js'></script>
+<script>
+L.mapbox.accessToken = 'pk.eyJ1Ijoib21uaXVzbm93IiwiYSI6ImFlZ0pNSXMifQ.VNyOy9GaRZ1cAS2nDTp3tw';
+var southWest = L.latLng(21.284438,-131.265625),
+    northEast = L.latLng(51.606163, -62.929688),
+    bounds = L.latLngBounds(southWest, northEast);
+
+var map = L.mapbox.map('map', 'omniusnow.lcfl92fp', {
+    // set that bounding box as maxBounds to restrict moving the map
+    // see full maxBounds documentation:
+    // http://leafletjs.com/reference.html#map-maxbounds
+    maxBounds: bounds,
+    maxZoom: 16,
+    minZoom: 5
+});
+
+// zoom the map to that bounding box
+map.fitBounds(bounds);
+
+
+var myLayer = L.mapbox.featureLayer().addTo(map);
+
+var geoJson = [{
+    "type": "Feature",
+    "geometry": {
+        "type": "Point",
+        "coordinates": [-80.190583, 25.767619]
+    },
+    "properties": {
+        "title": "Test location",
+//this should let the button code know whether this is a development or a 
+//land catagory, IT IS CASE SENSATIVE!!
+		 "Development":true,
+		 "Land":false,
+        "icon": {
+            "iconUrl": "https://cdn1.iconfinder.com/data/icons/Map-Markers-Icons-Demo-PNG/256/Map-Marker-Flag--Chartreuse.png",
+            "iconSize": [50,50], // size of the icon
+            "iconAnchor": [50,50], // point of the icon which will correspond to marker's location
+            "popupAnchor": [0, -25], // point from which the popup should open relative to the iconAnchor
+            "className": "dot"
+			
+        },
+		'images': [
+          ['http://upload.wikimedia.org/wikipedia/commons/0/04/Garfield_Building_Detroit.jpg','<p><b>Descriptive text goes here'],
+          ['http://upload.wikimedia.org/wikipedia/commons/2/2f/Greist_Building.JPG','More descriptive text goes here'],
+          ['http://detroit1701.org/Graphics/Dime%20Building.jpg','A link to more info goes here']
+        ]
+		
+    }
+},{
+    "type": "Feature",
+    "geometry": {
+        "type": "Point",
+        "coordinates": [-82.356899, 29.633012]
+    },
+    "properties": {
+        "title": "Test location 2",
+		 "Development":false,
+		 "Land":true,
+       "icon": {
+            "iconUrl": "https://cdn1.iconfinder.com/data/icons/Map-Markers-Icons-Demo-PNG/256/Map-Marker-Flag--Chartreuse.png",
+            "iconSize": [50,50], // size of the icon
+            "iconAnchor": [50,50], // point of the icon which will correspond to marker's location
+            "popupAnchor": [0, -25], // point from which the popup should open relative to the iconAnchor
+            "className": "dot"
+			
+        },
+		'images': [
+          ['http://upload.wikimedia.org/wikipedia/commons/0/04/Garfield_Building_Detroit.jpg','<p><b>Descriptive text goes here'],
+          ['http://upload.wikimedia.org/wikipedia/commons/2/2f/Greist_Building.JPG','More descriptive text goes here'],
+          ['http://detroit1701.org/Graphics/Dime%20Building.jpg','A link to more info goes here']
+        ]
+		
+    }
+
+},{
+    "type": "Feature",
+    "geometry": {
+        "type": "Point",
+        "coordinates": [-85.956899, 29.833012]
+    },
+    "properties": {
+        "title": "Test location 2",
+		 "Development":true,
+		 "Land":false,
+       "icon": {
+            "iconUrl": "https://cdn1.iconfinder.com/data/icons/Map-Markers-Icons-Demo-PNG/256/Map-Marker-Flag--Chartreuse.png",
+            "iconSize": [50,50], // size of the icon
+            "iconAnchor": [50,50], // point of the icon which will correspond to marker's location
+            "popupAnchor": [0, -25], // point from which the popup should open relative to the iconAnchor
+            "className": "dot"
+			
+        },
+		'images': [
+          ['http://upload.wikimedia.org/wikipedia/commons/0/04/Garfield_Building_Detroit.jpg','<p><b>Descriptive text goes here'],
+          ['http://upload.wikimedia.org/wikipedia/commons/2/2f/Greist_Building.JPG','More descriptive text goes here'],
+          ['http://detroit1701.org/Graphics/Dime%20Building.jpg','A link to more info goes here']
+        ]
+		
+    }
+
+}];
+
+// Set a custom icon on each marker based on feature properties.
+myLayer.on('layeradd', function(e) {
+    var marker = e.layer;
+    var feature = marker.feature;
+	 
+    var images = feature.properties.images
+    var slideshowContent = '';
+	
+marker.setIcon(L.icon(feature.properties.icon));
+    for(var i = 0; i < images.length; i++) {
+        var img = images[i];
+
+        slideshowContent += '<div class="image' + (i === 0 ? ' active' : '') + '">' +
+                              '<img src="' + img[0] + '" />' +
+                              '<div class="caption">' + img[1] + '</div>' +
+                            '</div>';
+    }
+
+    // Create custom popup content
+    var popupContent =  '<div id="' + feature.properties.id + '" class="popup">' +
+                            '<h2>' + feature.properties.title + '</h2>' +
+                            '<div class="slideshow">' +
+                                slideshowContent +
+                            '</div>' +
+                            '<div class="cycle">' +
+                                '<a href="#" class="prev">&laquo; Previous</a>' +
+                                '<a href="#" class="next">Next &raquo;</a>' +
+                            '</div>'
+                        '</div>';
+
+    // http://leafletjs.com/reference.html#popup
+    marker.bindPopup(popupContent,{
+        closeButton: false,
+        minWidth: 400
+    });
+	
+});
+
+        
+// Add features to the map
+myLayer.setGeoJSON(geoJson)
+.addTo(map);
+//button stuff
+$('.menu-ui a').on('click', function() {
+    // For each filter link, get the 'data-filter' attribute value.
+    var filter = $(this).data('filter');
+    $(this).addClass('active').siblings().removeClass('active');
+    myLayer.setFilter(function(f) {
+        // If the data-filter attribute is set to "all", return
+        // all (true). Otherwise, filter on markers that have
+        // a value set to true based on the filter name.
+        return (filter === 'Development') ? true : f.properties[filter] === true;
+    });
+    return false;
+});
+//end button stuff
+$('#map').on('click', '.popup .cycle a', function() {
+    var $slideshow = $('.slideshow'),
+        $newSlide;
+
+    if ($(this).hasClass('prev')) {
+        $newSlide = $slideshow.find('.active').prev();
+        if ($newSlide.index() < 0) {
+            $newSlide = $('.image').last();
+        }
+    } else {
+        $newSlide = $slideshow.find('.active').next();
+        if ($newSlide.index() < 0) {
+            $newSlide = $('.image').first();
+        }
+    }
+
+    $slideshow.find('.active').removeClass('active').hide();
+    $newSlide.addClass('active').show();
+    return false;
+});
+
+</script>
+
+
+</body>
+</html>

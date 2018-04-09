@@ -1,0 +1,308 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+@font-face {
+    font-family: Dense;
+    src: url(../Dense.otf);
+}
+
+*, ::after, ::before {
+    box-sizing: border-box;
+}
+
+.map {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+}
+
+.container-fluid {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
+.h-25 {
+    height: 10% !important;
+}
+
+.h-75 {
+    height: 90% !important;
+}
+
+.h-100 {
+    height: 100% !important;
+}
+
+.col-md-12 {
+    flex: 0 0 100%;
+    max-width: 100%;
+}
+
+div.col-md-12 h1{
+    position: relative;
+    color: #FFDF00;
+    margin-left: 112px;
+    font-family: Dense;
+    font-size: 2.5em;
+}
+
+div.col-md-12 h1:before{
+    content: "BAGUIO CITY EMERGENCY HOTLINES";
+    height: 50%; 
+    position: absolute;
+    color: #F3F315;
+    overflow: hidden; 
+}
+
+.col-md-10 {
+    flex: 0 0 83.333333%;
+    max-width: 83.333333%;
+}
+
+.col-md-2 {
+    flex: 0 0 16.666667%;
+    max-width: 16.666667%;
+}
+#logo {
+	display: block;
+	position: absolute;
+    margin-right: auto;
+	max-width:112px;
+	max-height:114px;
+	z-index: 100;
+
+}
+
+/* Dawn */
+
+ul {
+    display: block;
+    list-style-type: none;
+}
+
+li {
+    margin: 30px;
+    margin-left:0;
+}
+
+.buttons {
+    border: none;
+    position: relative;
+    border-radius: 100%;
+    cursor: pointer;
+    display: block;
+    height: 8.5em;
+    width: 8.5em;
+    transition: all .1s ease;
+}
+
+.buttons:hover {
+    border: none;
+    position: relative;
+}
+
+.buttons:active {
+    border: none;
+    position: relative;
+    top: 2px;
+}
+
+.buttons:focus {
+    outline: none;
+    border: none;   
+    top: 2px; 
+}
+
+#firestation {
+    background-image: url(../img/btn_fireman.png);
+    background-size: contain;
+    box-shadow: 0 -10px 0 #be2222 inset, 0 5px 25px rgba(65, 8, 8, 0.17), 0 5px rgba(255, 255, 255, 0.11) inset;
+}
+
+#firestation:hover {
+    background-image: url(../img/btn_fireman2.png);
+    background-size: contain;
+    box-shadow: 0 -10px 0 #8d1717 inset, 0 5px 25px rgba(0, 0, 0, 0.17), 0 5px rgba(255, 255, 255, 0.150) inset;
+}
+
+#firestation:focus {
+    background-image: url(../img/btn_fireman2.png);
+    background-size: contain;
+    box-shadow: 0 -5px 0 #8d1717 inset, 0 3px 6px rgba(0, 0, 0, 0.17), 0 5px rgba(255, 255, 255, 0.178) inset;
+}
+
+#hospital {
+    background-image: url(../img/btn_nurse.png);
+    background-size: contain;
+    box-shadow: 0 -10px 0 #0b9512 inset, 0 5px 25px rgba(65, 8, 8, 0.17), 0 5px rgba(255, 255, 255, 0.11) inset;
+}
+
+#hospital:hover {
+    background-image: url(../img/btn_nurse2.png);
+    background-size: contain;
+    box-shadow: 0 -10px 0 #047a0a inset, 0 5px 25px rgba(0, 0, 0, 0.17), 0 5px rgba(255, 255, 255, 0.150) inset;
+}
+
+#hospital:focus {
+    background-image: url(../img/btn_nurse2.png);
+    background-size: contain;
+    box-shadow: 0 -5px 0 #047a0a inset, 0 3px 6px rgba(0, 0, 0, 0.17), 0 5px rgba(255, 255, 255, 0.178) inset;
+}
+
+#policestation {
+    background-image: url(../img/btn_police.png);
+    background-size: contain;
+    box-shadow: 0 -10px 0 #0e298c inset, 0 5px 25px rgba(65, 8, 8, 0.17), 0 5px rgba(255, 255, 255, 0.11) inset;
+}
+
+#policestation:hover {
+    background-image: url(../img/btn_police2.png);
+    background-size: contain;
+    box-shadow: 0 -10px 0 #031863 inset, 0 5px 25px rgba(0, 0, 0, 0.17), 0 5px rgba(255, 255, 255, 0.089) inset;
+}
+
+#policestation:focus {
+    background-image: url(../img/btn_police2.png);
+    background-size: contain;
+    box-shadow: 0 -5px 0 #031863 inset, 0 3px 6px rgba(0, 0, 0, 0.17), 0 5px rgba(255, 255, 255, 0.089) inset;
+}
+
+/* end */
+/*
+#button1{
+	background-color: #1c63dd;
+	display:inline-block;
+	width: 80%;
+	padding: 15px 32px;
+	border: 1px solid #FFFFFF;
+	margin:1px 1px 1px 0;
+	border-radius:28px;
+	text-decoration:none;
+	font-family: Arial;
+	font-weight:300;
+	color:#FFFFFF;
+	text-align:center;
+	transition: all 0.2s;
+}
+#button2{
+	background-color: #f44242;
+	display:inline-block;
+	width: 80%;
+	padding: 15px 32px;
+	border: 1px solid #FFFFFF;
+	margin:1px 1px 1px 0;
+	border-radius:28px;
+	text-decoration:none;
+	font-family: Arial;
+	font-weight:300;
+	color:#FFFFFF;
+	text-align:center;
+	transition: all 0.2s;
+}
+#button3{
+	background-color: #1cdd29;
+	display:inline-block;
+	width: 80%;
+	padding: 15px 32px;
+	border: 1px solid #FFFFFF;
+	margin:1px 1px 1px 0;
+	border-radius:28px;
+	text-decoration:none;
+	font-family: Arial;
+	font-weight:300;
+	color:#FFFFFF;
+	text-align:center;
+	transition: all 0.2s;
+}
+#button1:hover{
+	color:#000000;
+	background-color:#FFFFFF;
+}
+
+@media all and (max-width:60px){
+	#button1{
+	display:block;
+	margin:2px auto;
+	}
+}
+
+#button2:hover{
+	color:#000000;
+	background-color:#FFFFFF;
+}
+
+@media all and (max-width:60px){
+	#button2{
+	display:block;
+	margin:2px auto;
+	}
+}
+
+#button3:hover{
+	color:#000000;
+	background-color:#FFFFFF;
+}
+
+@media all and (max-width:60px){
+	#button3{
+	display:block;
+	margin:2px auto;
+	}
+}
+
+th{
+	margin: 20px 20px 20px 20px;
+	border: 2px solid #FFFFFF;
+	color: white;
+	font-family: Verdana, Arial, sans-serif;
+	font-size: 25px
+}
+*/
+h1#memo {
+	margin: 20px 20px 20px 20px;
+	color: #FFDF00;
+	font-family: Dense, Verdana, Arial, sans-serif;
+	font-size: 2.5em;
+	text-align: center
+}
+
+.bg-danger { background-color: rgb(45,45,45) !important; }
+.bg-dark { background-color: rgb(112,112,112) !important; }
+.popup { text-align:center; }
+.popup .slideshow .image { display:none; }
+.popup .slideshow .image.active { display:block; }
+.popup .slideshow img { width:100%; }
+.popup .cycle { padding:10px 0 20px; }
+.popup .cycle a.prev { float:left; }
+.popup .cycle a.next { float:right; }
+.popup .slideshow .caption {
+    text-align: left !important;
+    background:#eee;
+    padding:10px;
+}
+
+#callnow {
+    padding-top: 2%;
+    padding-bottom: 10%;
+}
+
+#callnow a {
+    border-radius: 10%;
+    color:white;
+    background-color: red;
+    padding: 2%;
+}

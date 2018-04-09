@@ -1,0 +1,17 @@
+BAGUIO CITY FIRE STATION
+
+1. Baguio City Central Fire Station, 1 Corner Abanao and Kayang Streets, Baguio, 2600 Benguet
+16°25'22.5"N 120°35'34.9"E
+16.415674, 120.591657
+
+2. Irisan Fire Station, Baguio, Benguet
+16°25'21.9"N 120°33'25.1"E
+16.422761, 120.556967
+
+3.Aurora Hill FIRE STATION, North Central, Baguio, 2600 Benguet
+16°25'35.7"N 120°36'22.0"E
+16.426574, 120.606119
+
+4. CRASH FIRE RESCUE UNIT, Baguio, Benguet
+16°22'28.7"N 120°36'46.3"E
+16.374636, 120.612856
