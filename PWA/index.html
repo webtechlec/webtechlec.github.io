@@ -1,72 +1,38 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <style>
-            html, body {
-                padding: 0;
-                margin: 0;
-            }
-        </style>
-    </head>
-    <body>
-        
-        <canvas id="viewport"></canvas>
-        <script>
-            /*
-            (function() {
-                var canvas = document.getElementById('viewport'),
-                context = canvas.getContext('2d');
-                var imageObj = new Image();
-
-      imageObj.onload = function() {
-        context.drawImage(imageObj, 120, 50);
-      };
-      imageObj.src = 'https://www.html5canvastutorials.com/demos/assets/darth-vader.jpg';
-
-                window.addEventListener('resize', make_base, false);
-
-                function make_base() {
-                    canvas.width = window.innerWidth;
-                    canvas.height = window.innerHeight;
-                    base_image = new Image();
-                    base_image.src = 'map.jpg';
-                        base_image.onload = function() {
-                        context.drawImage(base_image, 0, 0);
-                    }
-                 }
-                make_base();
-                
-               
-             })();*/
-            var canvas = document.getElementById("viewport");
-var ctx = canvas.getContext("2d");
-
-var img1 = loadImage('map.jpg', main);
-var img2 = loadImage('1.png', main);
-
-var imagesLoaded = 0;
-function main() {
-    imagesLoaded += 1;
-
-    if(imagesLoaded == 2) {
-        // composite now
-        ctx.drawImage(img1, 0, 0);
-       
-        ctx.drawImage(img2, 60, 60, 85, 100);
-         ctx.scale(300,15);
-    }
-}
-
-function loadImage(src, onload) {
-    // http://www.thefutureoftheweb.com/blog/image-onload-isnt-being-called
-    var img = new Image();
-canvas.width = window.innerWidth;
-                    canvas.height = window.innerHeight;
-    img.onload = onload;
-    img.src = src;
-
-    return img;
-}
-        </script>
+<head>
+    <meta charset=utf-8 />
+    <title>Baguio City Emergency Hotlines</title>
+    <script>
+function notify(evt){alert(evt.target.id)}
+</script>
+    <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body> 
+    <div class="container-fluid h-25">
+        <div class="row h-100">
+            <div class="col-md-12 bg-danger">
+				<img src="./img/logo2.png" id="logo">
+                <h1>BAGUIO CITY EMERGENCY HOTLINES</h1>
+			</div>
+        </div>
+    </div>
+	
+    <div class="container-fluid h-75">
+        <div class="row h-100">
+            <div class="col-md-10"><embed src="img/map2.svg"style="height:100%;top:;left:0;bottom:0;right:0;"></div>
+            <div class="col-md-2 bg-dark">
+                <nav class='menu-ui'>
+			<h1 id="memo"> Select the service that is needed</h1>
+                <ul>
+                    <li><a href='#' class='active' id="button1" data-filter='Police'><button class="buttons" id="policestation" href=""></button></a></li>
+                    <li><a href='#' id="button2" data-filter='Hospitals' ><button class="buttons" id="hospital" href=""></button></a></li>
+                    <li><a href='#' id="button3" data-filter='FireStation'><button class="buttons" id="firestation" href=""></button></a></li>
+            </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
     </body>
 </html>
+    

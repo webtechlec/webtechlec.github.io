@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset=utf-8 />
+<title>Multiple filters on markers</title>
+<meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+<script src='https://api.tiles.mapbox.com/mapbox.js/v2.1.7/mapbox.js'></script>
+<link href='https://api.tiles.mapbox.com/mapbox.js/v2.1.7/mapbox.css' rel='stylesheet' />
+<style>
+  body { margin:0; padding:0; }
+  #map { position:absolute; top:0; bottom:0; width:100%; }
+</style>
+</head>
+<body>
+<style>
+.menu-ui {
+  background:#A2A19F;
+  position:absolute;
+  bottom:50px;
+  left:50%;
+  margin-left:-110px;
+  z-index:1;
+  border-radius:3px;
+  width:auto;
+  border:1px solid rgba(0,0,0,0.4);
+  }
+  .menu-ui a {
+    font-size:22px;
+    color:#fff;
+    display:table-cell;
+    padding:10px;
+    text-decoration:none;
+    border-bottom:1px solid rgba(0,0,0,0.25);
+    text-align:center;
+    }
+    .menu-ui a:first-child {
+      border-radius:3px 3px 0 0;
+      }
+    .menu-ui a:last-child {
+      border:none;
+      border-radius:0 0 3px 3px;
+      }
+    .menu-ui a:hover {
+      background:#f8f8f8;
+      color:#404040;
+      }
+    .menu-ui a.active,
+    .menu-ui a.active:hover {
+      background:#DB3E3A;
+      color:#FFF;
+      }
+	 
+</style>
+
+<!-- jQuery is required for this example. -->
+<script src='https://code.jquery.com/jquery-1.11.0.min.js'></script>
+
+<nav class='menu-ui'>
+  <a href='#' class='active' data-filter='Development'>Development</a>
+  <a href='#' data-filter='Land'>Land</a>
+</nav>
+<div id='map'></div>
+
+<script>
+L.mapbox.accessToken = 'pk.eyJ1Ijoib21uaXVzbm93IiwiYSI6ImFlZ0pNSXMifQ.VNyOy9GaRZ1cAS2nDTp3tw';
+var southWest = L.latLng(21.284438,-131.265625),
+    northEast = L.latLng(51.606163, -62.929688),
+    bounds = L.latLngBounds(southWest, northEast);
+var geojson = [
+    {
+      "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [-80.190583, 25.767619]
+        },
+        "properties": {
+            "title": "Test location",
+    //this should let the button code know whether this is a development or a 
+    //land catagory, IT IS CASE SENSATIVE!!
+    		 "Development":true,
+    		 "Land":false,
+        "marker-size": "large",
+        "marker-symbol": "city"
+      }
+    },
+    {
+      "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [-82.356899, 29.633012]
+        },
+        "properties": {
+            "title": "Test location 2",
+    		 "Development":false,
+    		 "Land":true,
+        "marker-size": "large",
+        "marker-symbol": "city"
+      }
+    },
+   
+];
+
+
+var map = L.mapbox.map('map', 'omniusnow.lcfl92fp', {
+    // set that bounding box as maxBounds to restrict moving the map
+    // see full maxBounds documentation:
+    // http://leafletjs.com/reference.html#map-maxbounds
+    maxBounds: bounds,
+    maxZoom: 16,
+    minZoom: 5
+});
+
+// zoom the map to that bounding box
+map.fitBounds(bounds);
+
+var markers = L.mapbox.featureLayer()
+    .setGeoJSON(geojson)
+    .addTo(map);
+
+$('.menu-ui a').on('click', function() {
+    // For each filter link, get the 'data-filter' attribute value.
+    var filter = $(this).data('filter');
+    $(this).addClass('active').siblings().removeClass('active');
+    markers.setFilter(function(f) {
+        // If the data-filter attribute is set to "all", return
+        // all (true). Otherwise, filter on markers that have
+        // a value set to true based on the filter name.
+        return (filter === 'all') ? true : f.properties[filter] === true;
+    });
+    return false;
+});
+</script>
+</body>
+</html>

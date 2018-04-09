@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset='utf-8' />
+        <title>Display a map</title>
+        <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+        <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.js'></script>
+        <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.css' rel='stylesheet' />
+        <link rel="stylesheet" href="css/style.css"/>
+        <style>
+            #map { relative; top:0; bottom:0; width:100%; }
+            .holder {
+                max-width: 260px;
+                min-width: 260px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container-fluid h-25">
+                <div class="row h-100">
+                    <div class="col-md-12 bg-danger">
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid h-75">
+            <div class="row h-100">
+                <div class="col-md-10" id="map"></div>
+                <div class="col-md-2 bg-dark"></div>
+            </div>
+        </div>
+        <script>
+            mapboxgl.accessToken = 'pk.eyJ1IjoibWl0Y2hhaW5zbGllaXQiLCJhIjoiY2pmYzBjMzd6MG13YjMxcGF3ZzhzbDlkNiJ9.L31BT52cSRJKJsUoIQrNKg';
+            var map = new mapboxgl.Map({
+                container: 'map', // container id
+                style: 'mapbox://styles/mapbox/streets-v9',
+                center: [120.596007, 16.402333], // starting position
+                zoom: 12, // starting zoom
+                interactive: false
+            });
+            map.on('load', function () {
+                map.loadImage("https://i.imgur.com/MK4NUzI.png", function(error, image) {
+                    // Add a layer showing the places.
+                    map.addImage("custom-marker", image);
+                    map.addLayer({
+                        "id": "places",
+                        "type": "symbol",
+                        "source": {
+                            "type": "geojson",
+                            "data": {
+                                "type": "FeatureCollection",
+                                "features": [{
+                                    "type": "Feature",
+                                    "properties": {
+                                        "description": "<strong>Baguio City Police Office Station 1</strong><p class='holder'>Testing 1</p>",
+                                        "icon": "custom-marker"
+                                    },
+                                        "geometry": {
+                                        "type": "Point",
+                                        "coordinates": [120.578325, 16.411615]
+                                    }
+                                }, {
+                                    "type": "Feature",
+                                    "properties": {
+                                        "description": "<strong>POLICE PRECINT No.8</strong><p class='holder'>Testing 2Testing 2Testing 2Testing 2TestingTesting 2Testing 2Testing 2Testing 2Testing 2Testing 2Testing 2Testing 2Testing 2Testing 2Testing 2Testing 2Testing 2Testing 2Testing 2Testing 2Testing 2Testing 2Testing 2Testing 2Testing 2Testing 2Testing 2Testing 2Testing 2Testing 2Testing 2Testing 2Testing 2Testing 2Testing 2Testing 2Testing 2Testing 2Testing 2Testing 2Testing 2Testing 2Testing 2Testing 2Testing 2Testing 2Testing 2Testing 2Testing 2Testing 2Testing 2Testing 2Testing 2Testing 2Testing 2Testing 2Testing 2Testing 2Testing 2Testing 2Testing 2Testing 2 2Testing 2Testing 2Testing 2Testing 2Testing 2</p>",
+                                        "icon": "theatre"
+                                    },
+                                    "geometry": {
+                                        "type": "Point",
+                                        "coordinates": [120.599572, 16.391066]
+                                    }
+                                }]
+                            }
+                        },
+                        "layout": {
+                            "icon-image": "{icon}",
+                            "text-field": "{title}",
+                            "text-font": ["Open Sans Semibold", "Arial Unicode MS Bold"],
+                            "text-offset": [0, 0.6]
+                        }, "paint": {
+
+                        }
+                    });
+
+                    // When a click event occurs on a feature in the places layer, open a popup at the
+                    // location of the feature, with description HTML from its properties.
+                    map.on('click', 'places', function (e) {
+                        var coordinates = e.features[0].geometry.coordinates.slice();
+                        var description = e.features[0].properties.description;
+
+                        // Ensure that if the map is zoomed out such that multiple
+                        // copies of the feature are visible, the popup appears
+                        // over the copy being pointed to.
+                        while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+                            coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+                        }
+
+                        new mapboxgl.Popup()
+                        .setLngLat(coordinates)
+                        .setHTML(description)
+                        .addTo(map);
+                    });
+
+                    // Change the cursor to a pointer when the mouse is over the places layer.
+                    map.on('mouseenter', 'places', function () {
+                        map.getCanvas().style.cursor = 'pointer';
+                    });
+
+                    // Change it back to a pointer when it leaves.
+                    map.on('mouseleave', 'places', function () {
+                        map.getCanvas().style.cursor = '';
+                    });
+                });
+            });
+        </script>
+        <script type="text/javascript">
+            if (navigator.serviceWorker.controller) {
+                console.log('[PWA Builder] active service worker found, no need to register')
+            } else {
+                navigator.serviceWorker.register('pwabuilder-sw.js', {
+                    scope: './'
+                }).then(function(reg) {
+                    console.log('Service worker has been registered for scope:'+ reg.scope);
+                });
+            }
+        </script>
+    </body>
+</html>
